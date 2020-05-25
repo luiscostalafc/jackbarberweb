@@ -7,8 +7,20 @@ import { updateProfileSuccess, updateProfileFailure } from './actions';
 
 export function* updateProfile({ payload }) {
 	try {
-		const { name, email, avatar_id, phone, zipcode, street, number,
-			complement, district, city, state, ...rest } = payload.data;
+		const {
+			name,
+			email,
+			avatar_id,
+			phone,
+			zipcode,
+			street,
+			number,
+			complement,
+			district,
+			city,
+			state,
+			...rest
+		} = payload.data;
 
 		const profile = {
 			name,
@@ -23,7 +35,6 @@ export function* updateProfile({ payload }) {
 			city,
 			state,
 			...(rest.oldPassword ? rest : {}),
-
 		};
 
 		const response = yield call(api.put, 'users', profile);

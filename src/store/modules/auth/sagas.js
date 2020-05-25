@@ -1,8 +1,8 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
-import api from '~/services/api';
-import history from '~/services/history';
+import api from '../../../services/api';
+import history from '../../../services/history';
 
 import { signInSuccess, signFailure, signUpSuccess } from './actions';
 
@@ -35,8 +35,19 @@ export function* singIn({ payload }) {
 
 export function* singUp({ payload }) {
 	try {
-		const { name, email, password, phone, zipcode, street, number, complement,
-		district, city, state} = payload;
+		const {
+			name,
+			email,
+			password,
+			phone,
+			zipcode,
+			street,
+			number,
+			complement,
+			district,
+			city,
+			state,
+		} = payload;
 
 		yield call(api.post, 'users', {
 			name,

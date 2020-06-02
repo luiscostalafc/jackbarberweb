@@ -11,14 +11,6 @@ export function* updateProfile({ payload }) {
 			name,
 			email,
 			avatar_id,
-			phone,
-			zipcode,
-			street,
-			number,
-			complement,
-			district,
-			city,
-			state,
 			...rest
 		} = payload.data;
 
@@ -26,14 +18,6 @@ export function* updateProfile({ payload }) {
 			name,
 			email,
 			avatar_id,
-			phone,
-			zipcode,
-			street,
-			number,
-			complement,
-			district,
-			city,
-			state,
 			...(rest.oldPassword ? rest : {}),
 		};
 

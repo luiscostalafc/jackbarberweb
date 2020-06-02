@@ -39,28 +39,12 @@ export function* singUp({ payload }) {
 			name,
 			email,
 			password,
-			phone,
-			zipcode,
-			street,
-			number,
-			complement,
-			district,
-			city,
-			state,
 		} = payload;
 
 		yield call(api.post, 'users', {
 			name,
 			email,
 			password,
-			phone,
-			zipcode,
-			street,
-			number,
-			complement,
-			district,
-			city,
-			state,
 			provider: true,
 		});
 		yield put(signUpSuccess());

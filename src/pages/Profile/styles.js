@@ -9,7 +9,7 @@ export const Container = styled.div`
 		display: flex;
 		flex-direction: column;
 		margin-top: 0px;
-		max-height: 700px
+		max-height: 550px
 
 		input {
 			background: rgba(0, 0, 0, 0.1);
@@ -36,11 +36,11 @@ export const Container = styled.div`
 			border: 0;
 			height: 1px;
 			background: rgba(255, 255, 255, 0.2);
-			margin: 10px 0 20px;
+			margin: 5px 0 10px;
 		}
 
 		button {
-			margin: 5px 0 0;
+			margin: 10px 0 0;
 			height: 44px;
 			background: #008b45;
 			font-weight: bold;

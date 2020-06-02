@@ -9,7 +9,7 @@ export default function AvatarInput() {
 	const { email } = useField('email');
 
 	const [file, setFile] = useState(defaultValue && defaultValue.id);
-	const [preview, setPreview] = useState(defaultValue && defaultValue.url);
+	const [preview, setPreview] = useState(defaultValue && defaultValue.url2);
 
 	const ref = useRef();
 
@@ -24,16 +24,20 @@ export default function AvatarInput() {
 	}, [ref.registerField]); //eslint-disable-line
 
 	async function hanldeChange(e) {
-		const data = new FormData();
 
-		data.append('file', e.target.files[0]);
+			const data = new FormData();
 
-		const response = await api.post('files', data);
+			data.append('file', e.target.files[0]);
 
-		const { id, url } = response.data;
+			const response = await api.post('files', data);
 
-		setFile(id);
-		setPreview(url);
+			const { id, url2 } = response.data;
+
+			setFile(id);
+		 setPreview(url2);
+
+
+
 	}
 
 	return (

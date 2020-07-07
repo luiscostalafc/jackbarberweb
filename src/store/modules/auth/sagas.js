@@ -17,8 +17,8 @@ export function* singIn({ payload }) {
 
 		const { token, user } = response.data;
 
-		if (!user.provider) {
-			toast.error('Usuário não é prestador');
+		if (!user.provider && !user.is_admin) {
+			toast.error('Usuário não é prestador nem administrador');
 			return;
 		}
 
@@ -35,11 +35,7 @@ export function* singIn({ payload }) {
 
 export function* singUp({ payload }) {
 	try {
-		const {
-			name,
-			email,
-			password,
-		} = payload;
+		const { name, email, password } = payload;
 
 		yield call(api.post, 'users', {
 			name,

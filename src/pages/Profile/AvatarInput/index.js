@@ -24,20 +24,16 @@ export default function AvatarInput() {
 	}, [ref.registerField]); //eslint-disable-line
 
 	async function hanldeChange(e) {
+		const data = new FormData();
 
-			const data = new FormData();
+		data.append('file', e.target.files[0]);
 
-			data.append('file', e.target.files[0]);
+		const response = await api.post('files', data);
 
-			const response = await api.post('files', data);
+		const { id, url2 } = response.data;
 
-			const { id, url2 } = response.data;
-
-			setFile(id);
-		 setPreview(url2);
-
-
-
+		setFile(id);
+		setPreview(url2);
 	}
 
 	return (

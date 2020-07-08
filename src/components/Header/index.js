@@ -21,7 +21,8 @@ export default function Header() {
 				<aside>
 					<Notifications />
 
-					<Profile>
+					{profile 
+					? <Profile>
 						<div>
 							<strong>{profile.name}</strong>
 							<Link to="/profile">Meu perfil</Link>
@@ -34,6 +35,7 @@ export default function Header() {
 							alt={`Foto de perfil de ${profile.name}`}
 						/>
 					</Profile>
+					: <div>Não logado</div>}
 				</aside>
 			</Content>
 		</Container>

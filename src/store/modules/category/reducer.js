@@ -1,8 +1,7 @@
 import produce from 'immer';
 
 const INITIAL_STATE = {
-	profile: null,
-	provider: null,
+	category: null,
 };
 
 export default function user(state = INITIAL_STATE, action) {
@@ -12,21 +11,21 @@ export default function user(state = INITIAL_STATE, action) {
 				draft.profile = action.payload.user;
 				break;
 			}
-			case '@user/GET_USER_SUCCESS': {
+			case '@user/GET_CATEGORY_SUCCESS': {
 				console.log(action.payload)
-				draft.provider = action.payload.provider;
+				draft.category = action.payload.category;
 				break;
 			}
-			case '@user/CREATE_USER_SUCCESS': {
-				draft.provider = action.payload.provider;
+			case '@user/CREATE_CATEGORY_SUCCESS': {
+				draft.category = action.payload.category;
 				break;
 			}
-			case '@user/UPDATE_USER_SUCCESS': {
-				draft.provider = action.payload.provider;
+			case '@user/UPDATE_CATEGORY_SUCCESS': {
+				draft.category = action.payload.category;
 				break;
 			}
-			case '@user/DELETE_USER_SUCCESS': {
-				draft.provider = action.payload.provider;
+			case '@user/DELETE_CATEGORY_SUCCESS': {
+				draft.category = action.payload.category;
 				break;
 			}
 			case '@user/UPDATE_PROFILE_SUCCESS': {

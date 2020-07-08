@@ -7,6 +7,7 @@ import SingIn from '../pages/SingIn';
 // import SingUp from '../pages/SingUp';
 
 import Dashboard from '../pages/Dashboard';
+import AdminDashboard from '../pages/AdminDashboard';
 import Profile from '../pages/Profile';
 import Schedules from '~/pages/Schedules';
 import Phones from '~/pages/Phones';
@@ -23,35 +24,47 @@ export default function Routes() {
 
 			<Route path="/dashboard" component={Dashboard} isPrivate />
 			<Route path="/profile" component={Profile} isPrivate />
-			<Route path="/admin/schedules" component={Schedules} isPrivate isAdmin />
-			<Route path="/admin/phones" component={Phones} isPrivate isAdmin />
 			<Route
+				path="/admin/dashboard"
+				exact
+				component={AdminDashboard}
+				isPrivate
+				isAdmin
+			/>
+			<Route path="/admin/schedules" exact component={Schedules} isPrivate isAdmin />
+			<Route path="/admin/phones" exact component={Phones} isPrivate isAdmin />
+			<Route
+				exact
 				path="/admin/categories"
 				component={Categories}
 				isPrivate
 				isAdmin
 			/>
 			<Route
+				exact
 				path="/admin/categories/create"
 				component={CategoriesForm}
 				isPrivate
 				isAdmin
 			/>
 			<Route
-				path="/admin/categories/update/id"
+				exact
+				path="/admin/categories/update/:id"
 				component={CategoriesForm}
 				isPrivate
 				isAdmin
 			/>
-			<Route path="/admin/users" component={Users} isPrivate isAdmin />
+			<Route path="/admin/users" exact component={Users} isPrivate isAdmin />
 			<Route
+				exact
 				path="/admin/users/create"
 				component={UsersForm}
 				isPrivate
 				isAdmin
 			/>
 			<Route
-				path="/admin/users/update/id"
+				exact
+				path="/admin/users/update/:id"
 				component={UsersForm}
 				isPrivate
 				isAdmin

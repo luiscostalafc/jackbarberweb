@@ -12,9 +12,8 @@ export default function RouteWrapper({
 	isPrivate,
 	...rest
 }) {
-	console.log(store.getState())
 	const { signed } = store.getState().auth;
-	// const { is_admin } = store.getState().user.profile.is_admin;
+	const is_admin = store.getState().user.profile.is_admin ? store.getState().user.profile.is_admin: false;
 
 	if (!signed && isPrivate) {
 		return <Redirect to="/" />;
@@ -24,9 +23,9 @@ export default function RouteWrapper({
 		return <Redirect to="/dashboard" />;
 	}
 
-	// if (signed && is_admin) {
-	// 	return <Redirect to="/admin/dashboard" />;
-	// }
+	if (signed && is_admin) {
+		return <Redirect to="/admin/dashboard" />;
+	}
 
 	const Layout = signed ? DefaultLayout : AuthLayout;
 

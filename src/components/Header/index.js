@@ -15,7 +15,7 @@ export default function Header() {
 			<Content>
 				<nav>
 					<img src={logo} alt="JackBarber" />
-					<Link to="/dashboard">DASHBOARD</Link>
+					{profile.is_admin ? <Link to="/dashboard">DASHBOARD</Link> : <Link to="/admin/dashboard">DASHBOARD</Link>}
 				</nav>
 
 				<aside>

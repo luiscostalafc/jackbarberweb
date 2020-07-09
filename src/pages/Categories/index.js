@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import api from '~/services/api';
 
 import { deleteCategoryRequest } from '~/store/modules/category/actions';
-import { Container } from './styles';
+import { Container, Card } from './styles';
 
 export default function Categories() {
 	const dispatch = useDispatch();
@@ -26,45 +26,49 @@ export default function Categories() {
 
 	return (
 		<Container>
-			{/* {categories.lenght > 0 ? ( */}
-				<table>
-					<thead>
-						<tr>
-							<th>Nome</th>
-							<th>Gênero</th>
-							<th>Preço</th>
-							<th>Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						{categories.map(category => (
-							<tr key={category.id}>
-								<td>{category.name}</td>
-								<td>{category.gender === 1 ? 'Masculino' : 'Feminino'}</td>
-								<td>{category.price}</td>
-								<td>
-									<span>
-										<Link to={`/admin/categories/update/${category.id}`}>
-											Editar
-										</Link>
-										<button
-											type="button"
-											onClick={() => {
-												handleDelete(category);
-											}}
-										>
-											Apagar
-										</button>
-									</span>
-								</td>
-							</tr>
-						))}
-					</tbody>
-				</table>
-				<Link to='/admin/categories/create'>Adicionar</Link>
-			{/* ) : (
-				<div>Não há registros</div>
-			)} */}
+			<ul>
+				<Card>
+					{Boolean(categories.lenght) ? (
+						<table>
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Gênero</th>
+									<th>Preço</th>
+									<th>Ações</th>
+								</tr>
+							</thead>
+							<tbody>
+								{categories.map(category => (
+									<tr key={category.id}>
+										<td>{category.name}</td>
+										<td>{category.gender === 1 ? 'Masculino' : 'Feminino'}</td>
+										<td>{category.price}</td>
+										<td>
+											<span>
+												<Link to={`/admin/categories/update/${category.id}`}>
+													Editar
+												</Link>
+												<button
+													type="button"
+													onClick={() => {
+														handleDelete(category);
+													}}
+												>
+													Apagar
+												</button>
+											</span>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					) : (
+					<div>Não há registros</div>
+					)}
+					<Link to='/admin/categories/create'>Adicionar</Link>
+				</Card>
+			</ul>
 		</Container>
 	);
 }

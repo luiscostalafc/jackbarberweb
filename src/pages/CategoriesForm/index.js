@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams} from "react-router";
-import { Form, Input } from '@rocketseat/unform';
+import { Form, Input, Select } from '@rocketseat/unform';
 
 import { signOut } from '~/store/modules/auth/actions';
 import { getCategoryRequest, createCategoryRequest, updateCategoryRequest } from '~/store/modules/category/actions';
@@ -13,6 +14,11 @@ export default function CategoriesForm() {
 	const dispatch = useDispatch();
 	if (id) dispatch(getCategoryRequest(id));
 	const category = useSelector(state => state.category);
+
+	const options = [
+		{id: 1, title: "Feminino"},
+		{id: 2, title: "Masculino"}
+	];
 
 	function handleSubmit(data) {
 		if(data.id) {
@@ -27,11 +33,19 @@ export default function CategoriesForm() {
 
 	return (
 		<Container>
+			<Link to="/admin/categories">Voltar para lista</Link>
 			<Form initialData={category} onSubmit={handleSubmit}>
 				<Input name="id" type="hidden" />
 				<Input name="name" placeholder="Nome categoria" />
-				<Input name="gender" placeholder="Gênero" />
-				<Input name="price"  placeholder="Valor" />
+				<Select
+					name="gender"
+					placeholder="Gênero"
+					options={options}
+					getOptionValue={option => option.id}
+      		getOptionLabel={option => option.title}
+					defaultValue={1}
+				/>
+				<Input name="price"  type="number" placeholder="Valor" />
 				<button type="submit">{category && category.id ? 'Editar': 'Inserir'}</button>
 			</Form>
 

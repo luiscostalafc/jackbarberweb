@@ -54,17 +54,10 @@ export default function Routes() {
 				isPrivate
 				isAdmin
 			/>
-			<Route path="/admin/users" exact component={Users} isPrivate isAdmin />
+			<Route path="/admin/:userType" exact component={Users} isPrivate isAdmin />
 			<Route
 				exact
 				path="/admin/users/create"
-				component={UsersForm}
-				isPrivate
-				isAdmin
-			/>
-			<Route
-				exact
-				path="/admin/users/update/:id"
 				component={UsersForm}
 				isPrivate
 				isAdmin

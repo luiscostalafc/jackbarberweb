@@ -25,7 +25,7 @@ export default function Notifications() {
 	);
 
 	const user = useSelector(state => state.user.profile);
-	const server = 'http://167.99.165.125:333';
+	const server = 'https://167.99.165.125:9090';
 
 	const user_id = user && user.id ? user.id : null;
 	const socket = useMemo(

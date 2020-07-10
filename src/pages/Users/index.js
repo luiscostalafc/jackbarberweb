@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useParams} from "react-router";
 import { Link } from 'react-router-dom';
 import api from '~/services/api';
 
@@ -8,6 +9,8 @@ import { Container } from './styles';
 
 export default function Users() {
 	const dispatch = useDispatch();
+	const { userType } = useParams();
+	const type = userType === 'users' ? 'not_providers' : 'providers';
 
 	function handleDelete(data) {
 		dispatch(deleteUserRequest(data));
@@ -16,7 +19,7 @@ export default function Users() {
 
 	useEffect(() => {
 		async function loadUsers() {
-			const response = await api.get('users');
+			const response = await api.get(`users/${type}`);
 			setUsers(response.data);
 			console.tron.log(response.data);
 		}
@@ -31,7 +34,7 @@ export default function Users() {
 						<tr>
 							<th>Nome</th>
 							<th>Email</th>
-							<th>Prestador</th>
+							<th>Telefones</th>
 							<th>Ações</th>
 						</tr>
 					</thead>
@@ -40,12 +43,10 @@ export default function Users() {
 							<tr key={user.id}>
 								<td>{user.name}</td>
 								<td>{user.email}</td>
-								<td>{user.provider ? 'Sim' : 'Não'}</td>
+								<td>{Boolean(user.phones) ? user.phones.map(phone => <span>({phone.area_code}) {phone.number}</span>) : <span>-</span>}</td>
 								<td>
 									<span>
-										<Link to={`/admin/users/update/${user.id}`}>
-											Editar
-										</Link>
+										{userType === 'providers' && <Link to={`/admin/schedule/${user.id}`}>Agenda</Link>}
 										<button
 											type="button"
 											onClick={() => {

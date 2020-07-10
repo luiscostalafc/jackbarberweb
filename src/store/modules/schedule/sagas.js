@@ -3,28 +3,21 @@ import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
-import { updateProfileSuccess, updateProfileFailure } from './actions';
+import { createUnavaliableSuccess, createUnavaliableFailure } from './actions';
 
-export function* updateProfile({ payload }) {
+export function* createUnavaliable({ payload }) {
 	try {
-		const { name, email, avatar_id, id, ...rest } = payload.data;
+		const unavaliable = payload.data;
 
-		const profile = {
-			name,
-			email,
-			avatar_id,
-			...(rest.oldPassword ? rest : {}),
-		};
-
-		const response = yield call(api.put, `users/${id}`, profile);
+		const response = yield call(api.post, 'appointments/unavailable', unavaliable);
 
 		toast.success('Perfil atualizado com sucesso!');
 
-		yield put(updateProfileSuccess(response.data));
+		yield put(createUnavaliableSuccess(response.data));
 	} catch (err) {
 		toast.error('Erro ao atualizar perfil, confira seus dados!');
-		yield put(updateProfileFailure());
+		yield put(createUnavaliableFailure());
 	}
 }
 
-export default all([takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile)]);
+export default all([takeLatest('@user/CREATE_UNAVALIABLE_REQUEST', createUnavaliable)]);

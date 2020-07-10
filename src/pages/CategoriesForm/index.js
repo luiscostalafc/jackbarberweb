@@ -1,13 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams} from "react-router";
-import { Form, Input, Select } from '@rocketseat/unform';
+import { Form } from '@rocketseat/unform';
 
 import { signOut } from '~/store/modules/auth/actions';
 import { getCategoryRequest, createCategoryRequest, updateCategoryRequest } from '~/store/modules/category/actions';
 
-import { Container } from './styles';
+import { Container, Button, InputDark, SelectDark, ButtonBlock } from './styles';
 
 export default function CategoriesForm() {
 	const { id } = useParams();
@@ -33,11 +32,11 @@ export default function CategoriesForm() {
 
 	return (
 		<Container>
-			<Link to="/admin/categories">Voltar para lista</Link>
+			<ButtonBlock to="/admin/categories">Voltar para lista</ButtonBlock>
 			<Form initialData={category} onSubmit={handleSubmit}>
-				<Input name="id" type="hidden" />
-				<Input name="name" placeholder="Nome categoria" />
-				<Select
+				<InputDark name="id" type="hidden" />
+				<InputDark name="name" placeholder="Nome categoria" />
+				<SelectDark
 					name="gender"
 					placeholder="Gênero"
 					options={options}
@@ -45,13 +44,13 @@ export default function CategoriesForm() {
       		getOptionLabel={option => option.title}
 					defaultValue={1}
 				/>
-				<Input name="price"  type="number" placeholder="Valor" />
-				<button type="submit">{category && category.id ? 'Editar': 'Inserir'}</button>
+				<InputDark name="price"  type="number" placeholder="Valor" />
+				<Button type="submit">{category && category.id ? 'Editar': 'Inserir'}</Button>
 			</Form>
 
-			<button type="button" onClick={handleSignOut}>
+			<Button type="button" onClick={handleSignOut}>
 				Sair do JackBarber
-			</button>
+			</Button>
 		</Container>
 	);
 }

@@ -9,8 +9,6 @@ import SingIn from '../pages/SingIn';
 import Dashboard from '../pages/Dashboard';
 import AdminDashboard from '../pages/AdminDashboard';
 import Profile from '../pages/Profile';
-import Schedules from '~/pages/Schedules';
-import Phones from '~/pages/Phones';
 import Categories from '~/pages/Categories';
 import CategoriesForm from '~/pages/CategoriesForm';
 import Users from '~/pages/Users';
@@ -31,8 +29,7 @@ export default function Routes() {
 				isPrivate
 				isAdmin
 			/>
-			<Route path="/admin/schedules" exact component={Schedules} isPrivate isAdmin />
-			<Route path="/admin/phones" exact component={Phones} isPrivate isAdmin />
+			<Route path="/admin/schedules/:id" exact component={Dashboard} isPrivate isAdmin />
 			<Route
 				exact
 				path="/admin/categories"

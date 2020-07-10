@@ -6,7 +6,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-	height: 64px;
+	height: 100px;
 	max-width: 900px;
 	margin: 0 auto;
 	display: flex;

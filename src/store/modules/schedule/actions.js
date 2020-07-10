@@ -1,19 +1,19 @@
-export function updateProfileRequest(data) {
+export function createUnavaliableRequest(data) {
 	return {
-		type: '@user/UPDATE_PROFILE_REQUEST',
+		type: '@user/CREATE_UNAVALIABLE_REQUEST',
 		payload: { data },
 	};
 }
 
-export function updateProfileSuccess(profile) {
+export function createUnavaliableSuccess(data) {
 	return {
-		type: '@user/UPDATE_PROFILE_SUCCESS',
-		payload: { profile },
+		type: '@user/CREATE_UNAVALIABLE_SUCCESS',
+		payload: { data },
 	};
 }
 
-export function updateProfileFailure() {
+export function createUnavaliableFailure() {
 	return {
-		type: '@user/UPDATE_PROFILE_FAILURE',
+		type: '@user/CREATE_UNAVALIABLE_FAILURE',
 	};
 }

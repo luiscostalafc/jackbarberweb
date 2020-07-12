@@ -15,11 +15,11 @@ export default function auth(state = INITIAL_STATE, action) {
 			}
 			case '@auth/SIGN_IN_SUCCESS': {
 				draft.token = action.payload.token;
-				draft.id = action.payload.id;
-				draft.name = action.payload.name;
-				draft.provider = action.payload.provider;
-				draft.avatar = action.payload.avatar;
 				draft.signed = true;
+				draft.loading = false;
+				break;
+			}
+			case '@auth/SIGN_IN_FAILURE': {
 				draft.loading = false;
 				break;
 			}
@@ -27,12 +27,7 @@ export default function auth(state = INITIAL_STATE, action) {
 				draft.loading = true;
 				break;
 			}
-
 			case '@auth/SIGN_UP_SUCCESS': {
-				draft.loading = false;
-				break;
-			}
-			case '@auth/SIGN_IN_FAILURE': {
 				draft.loading = false;
 				break;
 			}

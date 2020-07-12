@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-// import InputMask from "react-input-mask";
 import { Form, Input } from '@rocketseat/unform';
+// import { phoneNumber } from '../../services/mask';
 
 import { signOut } from '~/store/modules/auth/actions';
 import {
@@ -36,7 +36,6 @@ export default function UsersForm() {
 				<Input name="id" type="hidden" />
 				<Input name="name" placeholder="Nome completo" />
 				<Input name="email" type="email" placeholder="Seu endereço de e-mail" />
-				{/* <InputMask mask="(99) 99999-9999" placeholder="Telefone" name="phone" /> */}
 				<Input name="phone" placeholder="Seu número com DDD" />
 
 				<hr />

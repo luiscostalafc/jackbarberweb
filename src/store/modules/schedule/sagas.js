@@ -9,7 +9,11 @@ export function* createUnavaliable({ payload }) {
 	try {
 		const unavaliable = payload.data;
 
-		const response = yield call(api.post, 'appointments/unavailable', unavaliable);
+		const response = yield call(
+			api.post,
+			'appointments/unavailable',
+			unavaliable
+		);
 
 		toast.success('Perfil atualizado com sucesso!');
 
@@ -20,4 +24,6 @@ export function* createUnavaliable({ payload }) {
 	}
 }
 
-export default all([takeLatest('@user/CREATE_UNAVALIABLE_REQUEST', createUnavaliable)]);
+export default all([
+	takeLatest('@user/CREATE_UNAVALIABLE_REQUEST', createUnavaliable),
+]);

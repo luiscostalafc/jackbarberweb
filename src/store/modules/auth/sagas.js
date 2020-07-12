@@ -35,10 +35,12 @@ export function* singIn({ payload }) {
 
 export function* singUp({ payload }) {
 	try {
-		const { name, email, password } = payload;
+		const { name, phone, gender, email, password } = payload;
 
 		yield call(api.post, 'users', {
 			name,
+			phone,
+			gender,
 			email,
 			password,
 			provider: true,

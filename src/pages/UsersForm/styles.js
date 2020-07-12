@@ -9,9 +9,7 @@ export const Container = styled.div`
 		display: flex;
 		flex-direction: column;
 		margin-top: 0px;
-		max-height: 550px
-
-		input {
+		max-height: 550px input {
 			background: rgba(0, 0, 0, 0.1);
 			border: 0;
 			border-radius: 4px;

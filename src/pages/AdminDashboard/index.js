@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Container, Card } from './styles';
 
 const routes = [
-	{ route: 'categories', title: 'Categorias'},
-	{ route: 'users', title: 'Usuários'},
-	{ route: 'providers', title: 'Prestadores'},
+	{ route: 'categories', title: 'Categorias' },
+	{ route: 'users', title: 'Usuários' },
+	{ route: 'providers', title: 'Prestadores' },
 ];
 
 export default function AdminDashboard() {

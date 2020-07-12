@@ -12,7 +12,7 @@ export default function user(state = INITIAL_STATE, action) {
 				break;
 			}
 			case '@user/GET_CATEGORY_SUCCESS': {
-				console.log(action.payload)
+				console.log(action.payload);
 				draft.category = action.payload.category;
 				break;
 			}

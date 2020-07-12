@@ -3,15 +3,15 @@ import { toast } from 'react-toastify';
 
 import api from '~/services/api';
 
-import { 
-	getCategorySuccess, 
-	getCategoryFailure, 
-	createCategorySuccess, 
-	createCategoryFailure, 
-	updateCategorySuccess, 
-	updateCategoryFailure, 
-	deleteCategorySuccess, 
-	deleteCategoryFailure 
+import {
+	getCategorySuccess,
+	getCategoryFailure,
+	createCategorySuccess,
+	createCategoryFailure,
+	updateCategorySuccess,
+	updateCategoryFailure,
+	deleteCategorySuccess,
+	deleteCategoryFailure,
 } from './actions';
 
 export function* getCategory({ payload }) {
@@ -26,7 +26,7 @@ export function* getCategory({ payload }) {
 export function* createCategory({ payload }) {
 	try {
 		const { name, gender, price } = payload.category;
-		const data = { name, gender, price }
+		const data = { name, gender, price };
 		const response = yield call(api.post, 'categories', data);
 
 		toast.success('Categoria inserida com sucesso!');
@@ -41,7 +41,7 @@ export function* createCategory({ payload }) {
 export function* updateCategory({ payload }) {
 	try {
 		const { id, name, gender, price } = payload.category;
-		const data = { name, gender, price }
+		const data = { name, gender, price };
 		const response = yield call(api.put, `categories/${id}`, data);
 
 		toast.success('Categoria atualizado com sucesso!');
@@ -70,5 +70,5 @@ export default all([
 	takeLatest('@user/GET_CATEGORY_REQUEST', getCategory),
 	takeLatest('@user/CREATE_CATEGORY_REQUEST', createCategory),
 	takeLatest('@user/UPDATE_CATEGORY_REQUEST', updateCategory),
-	takeLatest('@user/DELETE_CATEGORY_REQUEST', deleteCategory)
+	takeLatest('@user/DELETE_CATEGORY_REQUEST', deleteCategory),
 ]);

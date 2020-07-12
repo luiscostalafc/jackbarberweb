@@ -1,9 +1,9 @@
 import React, { useMemo, useCallback, useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useParams} from "react-router";
+import { useParams } from 'react-router';
+import DataTable from 'react-data-table-component';
 import api from '~/services/api';
 
-import DataTable from 'react-data-table-component';
 // import memoize from 'memoize-one';
 import { deleteUserRequest } from '~/store/modules/user/actions';
 import { Container, Card, Button, ButtonBlock } from './styles';
@@ -23,57 +23,88 @@ export default function Users() {
 
 		loadUsers();
 	}, [users]); //eslint-disable-line
-	
-	const handleDelete = useCallback(id => {
-		dispatch(deleteUserRequest(id));
-	},[dispatch]);
 
-	const paginationOptions = { rowsPerPageText: 'Registros por página', rangeSeparatorText: 'de', selectAllRowsItem: true, selectAllRowsItemText: 'Total' };
-	const columns = useMemo(() => [
-		{
-			name: 'Nome',
-			selector: 'name',
-			sortable: true,
+	const handleDelete = useCallback(
+		id => {
+			dispatch(deleteUserRequest(id));
 		},
-		{
-			name: 'Email',
-			selector: 'email',
-			sortable: true,
-		},
-		{
-			name: 'Telefone',
-			cell: (row) => (
-				Boolean(row.phones) ? row.phones.map(phone => <span>({phone.area_code}) {phone.number}</span>) : <span>-</span>
-			),
-		},
-		{
-			name: 'Ações',
-			cell: (row) => (
-				<>
-					{userType === 'providers' && <ButtonBlock to={`/admin/schedules/${row.id}`} green>Agenda</ButtonBlock>}
-					<Button onClick={() => { handleDelete(row.id);}}>Apagar</Button>
-				</>
-			),
-			ignoreRowClick: true,
-			allowOverflow: true,
-			button: true,
-		}
-	],[handleDelete, userType]);
+		[dispatch]
+	);
+
+	const paginationOptions = {
+		rowsPerPageText: 'Registros por página',
+		rangeSeparatorText: 'de',
+		selectAllRowsItem: true,
+		selectAllRowsItemText: 'Total',
+	};
+	const columns = useMemo(
+		() => [
+			{
+				name: 'Nome',
+				selector: 'name',
+				sortable: true,
+			},
+			{
+				name: 'Email',
+				selector: 'email',
+				sortable: true,
+			},
+			{
+				name: 'Telefone',
+				cell: row =>
+					row.phones ? (
+						row.phones.map(phone => (
+							<span>
+								({phone.area_code}) {phone.number}
+							</span>
+						))
+					) : (
+						<span>-</span>
+					),
+			},
+			{
+				name: 'Ações',
+				cell: row => (
+					<>
+						{userType === 'providers' && (
+							<ButtonBlock to={`/admin/schedules/${row.id}`} green>
+								Agenda
+							</ButtonBlock>
+						)}
+						<Button
+							onClick={() => {
+								handleDelete(row.id);
+							}}
+						>
+							Apagar
+						</Button>
+					</>
+				),
+				ignoreRowClick: true,
+				allowOverflow: true,
+				button: true,
+			},
+		],
+		[handleDelete, userType]
+	);
 
 	return (
 		<Container>
 			<Card>
 				<DataTable
-					title={userType === 'users' ? 'Lista de Usuários' : 'Lista de Prestadores'}
+					title={
+						userType === 'users' ? 'Lista de Usuários' : 'Lista de Prestadores'
+					}
 					columns={columns}
 					data={users}
 					pagination
 					paginationComponentOptions={paginationOptions}
-					theme='dark'
+					theme="dark"
 				/>
-				{userType === 'providers' && <ButtonBlock to='/admin/users/create'>Adicionar</ButtonBlock>}	
+				{userType === 'providers' && (
+					<ButtonBlock to="/admin/users/create">Adicionar</ButtonBlock>
+				)}
 			</Card>
 		</Container>
 	);
 }
-

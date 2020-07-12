@@ -28,14 +28,6 @@ export default function Profile() {
 				<Input name="id" type="hidden" />
 				<Input name="name" placeholder="Nome completo" />
 				<Input name="email" type="email" placeholder="Seu endereço de e-mail" />
-				{/* <Input name="phone" placeholder="Seu número com DDD" />
-				<Input name="zipcode" placeholder="CEP" />
-				<Input name="street" placeholder="Logradouro" />
-				<Input name="number" placeholder="Número" />
-				<Input name="complement" placeholder="Algum complemento" />
-				<Input name="district" placeholder="Bairro" />
-				<Input name="city" placeholder="Cidade" />
-				<Input name="state" placeholder="Estado" /> */}
 
 				<hr />
 

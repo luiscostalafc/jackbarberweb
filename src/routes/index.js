@@ -29,7 +29,13 @@ export default function Routes() {
 				isPrivate
 				isAdmin
 			/>
-			<Route path="/admin/schedules/:id" exact component={Dashboard} isPrivate isAdmin />
+			<Route
+				path="/admin/schedules/:id"
+				exact
+				component={Dashboard}
+				isPrivate
+				isAdmin
+			/>
 			<Route
 				exact
 				path="/admin/categories"
@@ -51,7 +57,13 @@ export default function Routes() {
 				isPrivate
 				isAdmin
 			/>
-			<Route path="/admin/:userType" exact component={Users} isPrivate isAdmin />
+			<Route
+				path="/admin/:userType"
+				exact
+				component={Users}
+				isPrivate
+				isAdmin
+			/>
 			<Route
 				exact
 				path="/admin/users/create"

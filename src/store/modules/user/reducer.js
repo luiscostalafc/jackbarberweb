@@ -13,7 +13,7 @@ export default function user(state = INITIAL_STATE, action) {
 				break;
 			}
 			case '@user/GET_USER_SUCCESS': {
-				console.log(action.payload)
+				console.log(action.payload);
 				draft.provider = action.payload.provider;
 				break;
 			}

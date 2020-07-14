@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Form, Input } from '@rocketseat/unform';
 import * as Yup from 'yup';
 
@@ -36,7 +36,7 @@ export default function SingIn() {
 				/>
 
 				<button type="submit">{loading ? 'Carregando...' : 'Acessar'}</button>
-				{/* <Link to="/register">Criar conta gratuita</Link> */}
+				<Link to="/register">Criar conta gratuita</Link>
 			</Form>
 		</>
 	);

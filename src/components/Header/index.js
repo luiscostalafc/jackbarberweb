@@ -15,27 +15,25 @@ export default function Header() {
 			<Content>
 				<nav>
 					<img src={logo} alt="JackBarber" />
-					{profile.is_admin ? <Link to="/admin/dashboard">DASHBOARD ADMIN</Link> : <Link to="/dashboard">DASHBOARD</Link>}
+					<Link to="/dashboard">DASHBOARD</Link>
 				</nav>
 
 				<aside>
 					<Notifications />
 
-					{profile 
-					? <Profile>
+					<Profile>
 						<div>
 							<strong>{profile.name}</strong>
 							<Link to="/profile">Meu perfil</Link>
 						</div>
 						<img
 							src={
-								(profile.avatar && profile.avatar.url2) ||
+								(profile.avatar && profile.avatar.url) ||
 								`https://api.adorable.io/avatars/50/${profile.email}`
 							}
 							alt={`Foto de perfil de ${profile.name}`}
 						/>
 					</Profile>
-					: <div>Não logado</div>}
 				</aside>
 			</Content>
 		</Container>

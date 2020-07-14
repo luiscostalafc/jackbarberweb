@@ -1,8 +1,8 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 
-import api from '../../../services/api';
-import history from '../../../services/history';
+import api from '~/services/api';
+import history from '~/services/history';
 
 import { signInSuccess, signFailure, signUpSuccess } from './actions';
 
@@ -17,8 +17,8 @@ export function* singIn({ payload }) {
 
 		const { token, user } = response.data;
 
-		if (!user.provider && !user.is_admin) {
-			toast.error('Usuário não é prestador nem administrador');
+		if (!user.provider) {
+			toast.error('Usuário não é prestador');
 			return;
 		}
 
@@ -35,14 +35,13 @@ export function* singIn({ payload }) {
 
 export function* singUp({ payload }) {
 	try {
-		const { name, phone, gender, email, password } = payload;
+		const { name, email, password, phone } = payload;
 
 		yield call(api.post, 'users', {
 			name,
-			phone,
-			gender,
 			email,
 			password,
+			phone,
 			provider: true,
 		});
 		yield put(signUpSuccess());

@@ -9,7 +9,7 @@ export default function AvatarInput() {
 	const { email } = useField('email');
 
 	const [file, setFile] = useState(defaultValue && defaultValue.id);
-	const [preview, setPreview] = useState(defaultValue && defaultValue.url2);
+	const [preview, setPreview] = useState(defaultValue && defaultValue.url);
 
 	const ref = useRef();
 
@@ -30,10 +30,10 @@ export default function AvatarInput() {
 
 		const response = await api.post('files', data);
 
-		const { id, url2 } = response.data;
+		const { id, url } = response.data;
 
 		setFile(id);
-		setPreview(url2);
+		setPreview(url);
 	}
 
 	return (

@@ -17,6 +17,7 @@ const schema = Yup.object().shape({
 	password: Yup.string()
 		.min(6, 'No mínimo 6 caracteres')
 		.required('A senha é obrigatória'),
+	phone: Yup.string().required('o número de telefone é obrigatório'),
 });
 
 export default function SingUp() {
@@ -39,6 +40,7 @@ export default function SingUp() {
 						type="password"
 						placeholder="Sua senha secreta"
 					/>
+					<Input name="phone" placeholder="Seu número com DDD" />
 
 					<button type="submit">Criar conta</button>
 					<Link to="/">Já tenho login</Link>

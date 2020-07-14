@@ -6,7 +6,7 @@ export default reducers => {
 		{
 			key: 'jackbarber',
 			storage,
-			whitelist: ['auth', 'user', 'schedule', 'category'],
+			whitelist: ['auth', 'user'],
 		},
 		reducers
 	);

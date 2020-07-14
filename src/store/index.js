@@ -4,7 +4,7 @@ import createSagaMiddleware from 'redux-saga';
 import createStore from './createStore';
 import persistReducer from './persistReducers';
 
-import rootReducer from './rootReducer';
+import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
 const sagaMonitor =

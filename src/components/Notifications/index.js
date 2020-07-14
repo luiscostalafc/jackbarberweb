@@ -25,15 +25,17 @@ export default function Notifications() {
 	);
 
 	const user = useSelector(state => state.user.profile);
+	const server = 'http://167.99.165.125:9091';
 
+	const user_id = user && user.id ? user.id : null;
 	const socket = useMemo(
 		() =>
-			socketio('http://192.168.0.2:3333', {
+			socketio(server, {
 				query: {
-					user_id: user.id,
+					user_id,
 				},
 			}),
-		[user.id]
+		[user_id]
 	);
 
 	useEffect(() => {
